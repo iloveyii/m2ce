@@ -34,6 +34,8 @@ INSTALLATIONS
    ```
   * Deploy sample data `php bin/magento sampledata:deploy`.
   * For first time sample data run the command `php bin/magento setup:upgrade`.
+  * Point web browser to m2ce/ directory or Create a virtual host using [vh](https://github.com/iloveyii/vh) `vh new m2ce -p ~/m2ce`
+  * Browse to [http://m2ce.loc](http://m2ce.loc) 
 
 DIRECTORY STRUCTURE
 -------------------
