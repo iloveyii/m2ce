@@ -34,4 +34,19 @@ php bin/magento setup:store-config:set --base-url-secure="https://luma.softhem.s
 # Then clear cache
 php bin/magento cache:flush
 
+# Change currency
+php bin/magento setup:store-config:set --currency="SEK"
+
+
+# Make magento 2 faster
+# Use PHP-FPM
+apt-get install php7.1-fpm
+a2enmod proxy_fcgi setenvif
+a2enconf php7.1-fpm
+sudo service php7.1-fpm restart
+sudo service apache2 restart
+
+# Enable opcache in PHP
+sudo nano /etc/php/7.1/apache2/php.ini find opcache.enable
+opcache.enable=1
 
