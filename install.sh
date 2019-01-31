@@ -94,3 +94,7 @@ sudo ./install_server.sh
     ),
   ),
 '
+
+# Use Varnish cache
+# https://devdocs.magento.com/guides/v2.3/config-guide/varnish/config-varnish-magento.html
+
