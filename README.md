@@ -4,54 +4,36 @@ Magento 2 Community Edition Installation via Composer
 
 This is an app for coding challenges. The admin can create a challenge and invite others to complete it. The code is tested against the results and performance automatically.
 
-![Screenshot](http://challenge.softhem.se/images/screenshot.png)
+![Screenshot](https://i.ytimg.com/vi/vdBQrHwF4Po/maxresdefault.jpg)
 
-# [Demo](http://challenge.softhem.se/)
+# [Demo](http://m2ce.softhem.se/)
 
 INSTALLATIONS
 ---------------
-  * Clone the repository `git clone git@bitbucket.org:iloveyii/challenge.git`.
-  * Run composer install `composer install`.
-  * Then run composer command `composer dump-autoload`.
-  * Create a database (manually for now) and adjust the database credentials in the `common/config/main-local.php` file as per your environment.
-  * Run the init command to initialize Yii 2 app `php init.php`.
-  * Run migrations create the database table as `./yii migrate`.
-  * Point web browser to frontend/web directory or Create a virtual host using [vh](https://github.com/iloveyii/vh) `vh new challenge -p ~/challenge/frontend/web`
-  * Browse to [http://challenge.loc](http://challenge.loc) 
-  
-  
-
-composer create-project --repository-url=https://repo.magento.com/ magento/project-community-edition m2ce
-
-echo "CREATE DATABASE magento2" | mysql -u root -p
-
-php bin/magento setup:install \
---base-url="http://m2ce.loc/" \
---db-host="localhost" \
---db-name="m2ce" \
---db-user="root" \
---db-password="root" \
---admin-firstname="admin" \
---admin-lastname="admin" \
---admin-email="admin@example.com" \
---admin-user="admin" \
---admin-password="admin123" \
---language="en_US" \
---currency="USD" \
---timezone="America/Chicago" \
---use-rewrites="1" \
---backend-frontname="admin"
-
-
-php bin/magento sampledata:deploy
-php bin/magento setup:upgrade
-
-
-  
-
-[![Latest Stable Version](https://poser.pugx.org/yiisoft/yii2-app-advanced/v/stable.png)](https://packagist.org/packages/yiisoft/yii2-app-advanced)
-[![Total Downloads](https://poser.pugx.org/yiisoft/yii2-app-advanced/downloads.png)](https://packagist.org/packages/yiisoft/yii2-app-advanced)
-[![Build Status](https://travis-ci.org/yiisoft/yii2-app-advanced.svg?branch=master)](https://travis-ci.org/yiisoft/yii2-app-advanced)
+  * Create project using composer `composer create-project --repository-url=https://repo.magento.com/ magento/project-community-edition m2ce`.
+  * Create database `echo "CREATE DATABASE m2ce" | mysql -u root -p`.
+  * Install and create database tables
+   ``` 
+   php bin/magento setup:install \
+   --base-url="http://m2ce.loc/" \
+   --db-host="localhost" \
+   --db-name="m2ce" \
+   --db-user="root" \
+   --db-password="root" \
+   --admin-firstname="admin" \
+   --admin-lastname="admin" \
+   --admin-email="admin@example.com" \
+   --admin-user="admin" \
+   --admin-password="admin123" \
+   --language="en_US" \
+   --currency="USD" \
+   --timezone="America/Chicago" \
+   --use-rewrites="1" \
+   --backend-frontname="admin"  
+   
+   ```
+  * Deploy sample data `php bin/magento sampledata:deploy`.
+  * For first time sample data run the command `php bin/magento setup:upgrade`.
 
 DIRECTORY STRUCTURE
 -------------------
