@@ -38,7 +38,7 @@ php bin/magento cache:flush
 php bin/magento setup:store-config:set --currency="SEK"
 
 
-# Make magento 2 faster
+################## Make magento 2 faster
 # Use PHP-FPM
 apt-get install php7.1-fpm
 a2enmod proxy_fcgi setenvif
@@ -50,3 +50,47 @@ sudo service apache2 restart
 sudo nano /etc/php/7.1/apache2/php.ini find opcache.enable
 opcache.enable=1
 
+# Enable production mode
+sudo php -f bin/magento deploy:mode:set production
+
+# Use Redis
+sudo apt-get update
+sudo apt-get install build-essential tcl8.5
+sudo apt-get install make
+wget http://download.redis.io/redis-stable.tar.gz
+tar xvzf redis-stable.tar.gz
+cd redis-stable
+make
+sudo make install
+cd utils/
+sudo ./install_server.sh
+# Edit app/etc/env.php add
+: '
+'cache' =>
+  array (
+    'frontend' =>
+    array (
+      'default' =>
+      array (
+        'backend' => 'Cm_Cache_Backend_Redis',
+        'backend_options' =>
+        array (
+          'server' => '127.0.0.1',
+          'database' => '0',
+          'port' => '6379',
+        ),
+      ),
+      'page_cache' =>
+      array (
+        'backend' => 'Cm_Cache_Backend_Redis',
+        'backend_options' =>
+        array (
+          'server' => '127.0.0.1',
+          'port' => '6379',
+          'database' => '1',
+          'compress_data' => '0',
+        ),
+      ),
+    ),
+  ),
+'
