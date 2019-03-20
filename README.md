@@ -6,7 +6,7 @@ This is an app for coding challenges. The admin can create a challenge and invit
 
 ![Screenshot](https://i.ytimg.com/vi/vdBQrHwF4Po/maxresdefault.jpg)
 
-# [Demo](http://m2ce.softhem.se/)
+# [Demo](http://luma.softhem.se/)
 
 INSTALLATIONS
 ---------------
